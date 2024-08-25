@@ -36,8 +36,13 @@ class DataIngestion:
             test_data.to_csv(self.ingestion_config.test_data_path, header=True, index=False)
             
             logging.info("Data ingestion completed.")
+            
+            return (
+                self.ingestion_config.train_data_path,
+                self.ingestion_config.test_data_path
+            )
         except Exception as e:
-            logging.error(f"An error occurs: {e}")
+            logging.error(f"An error occurs: {CustomizedException(e)}")
             raise CustomizedException(e)
             
 if __name__ == "__main__":

@@ -22,5 +22,5 @@ if __name__ == "__main__":
     try:
         a = 1/0
     except Exception as e:
-        logging.error(f"An error occurs: {e}")
+        logging.error(f"An error occurs: {CustomizedException(e)}")
         raise CustomizedException(e)
