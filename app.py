@@ -7,7 +7,7 @@ from src.pipeline.predict_pipeline import PredictPipeline, CustomData
 from src.logger import logging
 from src.exception import CustomizedException
 
-application = Flask(__name__)
+app = Flask(__name__)
 
 def graceful_shutdown(signum, frame):
     print("Received signal", signum)
@@ -17,11 +17,11 @@ def graceful_shutdown(signum, frame):
     sys.exit(0)
     
 
-@application.route('/')
+@app.route('/')
 def index():
     return render_template("index.html")
 
-@application.route("/predictdata", methods=["GET", "POST"])
+@app.route("/predictdata", methods=["GET", "POST"])
 def predict_datapoint():
     if request.method == "GET":
         return render_template("home.html")
@@ -65,4 +65,4 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, graceful_shutdown)  # Handle Ctrl+C
     signal.signal(signal.SIGTERM, graceful_shutdown)  # Handle termination signals
 
-    application.run(host="0.0.0.0", port=5000,debug=False)
+    app.run(host="0.0.0.0", port=5000,debug=False)
