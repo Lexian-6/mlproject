@@ -16,7 +16,6 @@ def graceful_shutdown(signum, frame):
     # e.g., closing database connections, etc.
     sys.exit(0)
     
-
 @app.route('/')
 def index():
     return render_template("index.html")
