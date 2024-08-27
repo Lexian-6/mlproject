@@ -65,4 +65,4 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, graceful_shutdown)  # Handle Ctrl+C
     signal.signal(signal.SIGTERM, graceful_shutdown)  # Handle termination signals
 
-    app.run(host="0.0.0.0", port=5000,debug=False)
+    app.run(host="0.0.0.0", port=8080,debug=False)
